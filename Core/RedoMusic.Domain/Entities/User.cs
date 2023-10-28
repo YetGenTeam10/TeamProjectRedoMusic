@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RedoMusic.Domain.Enums
+namespace RedoMusic.Domain.Entities
 {
-        {
-        }
+    internal class Class1
+    {
+    }
 }

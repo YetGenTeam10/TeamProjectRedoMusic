@@ -15,6 +15,8 @@ namespace RedoMusic.Persistence.Contexts
 
         public DbSet<Brand> Brands { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = "Server=91.151.83.102;Port=5432;Database=!RedoMusicDbTeam10;User Id=ahmetkokteam;Password=obXRMG*U6rJ4R0cbHszpgEuFd;";
