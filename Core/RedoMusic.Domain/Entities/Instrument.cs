@@ -1,4 +1,5 @@
 ﻿
+using RedoMusic.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace RedoMusic.Domain.Entities
 
         public string Model { get; set; }
 
-        public string Color { get; set; }
+        public ColorType Color { get; set; }
 
         public DateTime? ProductionYear { get; set; }
 
