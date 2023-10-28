@@ -66,15 +66,53 @@ namespace RedoMusic.Persistence.Migrations
                     b.ToTable("Brands");
                 });
 
+            modelBuilder.Entity("RedoMusic.Domain.Entities.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("CreatedByUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DeletedByUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("ModifiedByUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("RedoMusic.Domain.Entities.Instrument", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Color")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Color")
+                        .HasColumnType("integer");
 
                     b.Property<string>("CreatedByUserId")
                         .HasColumnType("text");
@@ -116,6 +154,8 @@ namespace RedoMusic.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("brandId");
 
                     b.ToTable("Instruments");
@@ -123,6 +163,10 @@ namespace RedoMusic.Persistence.Migrations
 
             modelBuilder.Entity("RedoMusic.Domain.Entities.Instrument", b =>
                 {
+                    b.HasOne("RedoMusic.Domain.Entities.Category", null)
+                        .WithMany("InstrumentList")
+                        .HasForeignKey("CategoryId");
+
                     b.HasOne("RedoMusic.Domain.Entities.Brand", "brand")
                         .WithMany()
                         .HasForeignKey("brandId")
@@ -130,6 +174,11 @@ namespace RedoMusic.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("brand");
+                });
+
+            modelBuilder.Entity("RedoMusic.Domain.Entities.Category", b =>
+                {
+                    b.Navigation("InstrumentList");
                 });
 #pragma warning restore 612, 618
         }
