@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace RedoMusic.Domain.Enums
 {
-    internal class Color
-    {
-    }
+        {
+        }
 }
