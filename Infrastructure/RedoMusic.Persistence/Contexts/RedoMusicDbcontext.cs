@@ -17,9 +17,14 @@ namespace RedoMusic.Persistence.Contexts
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<User> Users{ get; set; }
+
+        public DbSet<Favourite> Favorites { get; set; }
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "Server=91.151.83.102;Port=5432;Database=!RedoMusicDbTeam10;User Id=ahmetkokteam;Password=obXRMG*U6rJ4R0cbHszpgEuFd;";
+            string connectionString = "Server=91.151.83.102;Port=5432;Database=ReDoMusicDbTeam10;User Id=ahmetkokteam;Password=obXRMG*U6rJ4R0cbHszpgEuFd;";
 
             optionsBuilder.UseNpgsql(connectionString);
         }

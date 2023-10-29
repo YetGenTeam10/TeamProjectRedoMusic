@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RedoMusic.Persistence.Contexts;
@@ -11,9 +12,11 @@ using RedoMusic.Persistence.Contexts;
 namespace RedoMusic.Persistence.Migrations
 {
     [DbContext(typeof(RedoMusicDbcontext))]
-    partial class RedoMusicDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20231029115345_dbcreation")]
+    partial class dbcreation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,48 +105,6 @@ namespace RedoMusic.Persistence.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("RedoMusic.Domain.Entities.Favourite", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("CreatedByUserId")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("DeletedByUserId")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("DeletedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("InstrumentId")
-                        .HasColumnType("uuid");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("ModifiedByUserId")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("InstrumentId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Favorites");
-                });
-
             modelBuilder.Entity("RedoMusic.Domain.Entities.Instrument", b =>
                 {
                     b.Property<Guid>("Id")
@@ -201,73 +162,6 @@ namespace RedoMusic.Persistence.Migrations
                     b.HasIndex("brandId");
 
                     b.ToTable("Instruments");
-                });
-
-            modelBuilder.Entity("RedoMusic.Domain.Entities.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("CreatedByUserId")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("DeletedByUserId")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("DeletedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("ModifiedByUserId")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("RedoMusic.Domain.Entities.Favourite", b =>
-                {
-                    b.HasOne("RedoMusic.Domain.Entities.Instrument", "Instrument")
-                        .WithMany()
-                        .HasForeignKey("InstrumentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RedoMusic.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Instrument");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RedoMusic.Domain.Entities.Instrument", b =>

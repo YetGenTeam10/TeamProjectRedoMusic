@@ -13,10 +13,16 @@ namespace RedoMusicMVC.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(bool? isLoggedIn)
         {
+            if(isLoggedIn != null)
+            {
+                ModelState.AddModelError("", "Successfully Logged In");
+            }
             return View();
         }
+
+        
 
         public IActionResult Privacy()
         {
