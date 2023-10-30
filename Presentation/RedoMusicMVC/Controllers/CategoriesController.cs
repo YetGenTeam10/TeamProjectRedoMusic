@@ -4,12 +4,12 @@ using RedoMusic.Persistence.Contexts;
 
 namespace RedoMusicMVC.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoryController : Controller
     {
         private readonly RedoMusicDbcontext dbcontext;
 
 
-        public CategoriesController()
+        public CategoryController()
         {
             dbcontext = new RedoMusicDbcontext();
         }
@@ -41,11 +41,6 @@ namespace RedoMusicMVC.Controllers
 
             return RedirectToAction("AddCategory");
         }
-
-
-
-
-
 
     }
 }
