@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RedoMusic.Persistence.Contexts;
@@ -11,9 +12,11 @@ using RedoMusic.Persistence.Contexts;
 namespace RedoMusic.Persistence.Migrations
 {
     [DbContext(typeof(RedoMusicDbcontext))]
-    partial class RedoMusicDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20231030130635_mig_1_create_tables_database")]
+    partial class mig_1_create_tables_database
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,12 +136,12 @@ namespace RedoMusic.Persistence.Migrations
                     b.Property<DateTime>("DeletedOn")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("ModifiedByUserId")
                         .HasColumnType("text");
@@ -147,10 +150,6 @@ namespace RedoMusic.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Picture")
                         .IsRequired()
                         .HasColumnType("text");
 
