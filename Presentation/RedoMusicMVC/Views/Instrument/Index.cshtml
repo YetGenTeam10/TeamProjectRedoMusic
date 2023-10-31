@@ -11,6 +11,7 @@
                 <th>Barcode</th>
                 <th>ProductionYear</th>
                 <th>Price</th>
+                <th>Picture</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
                     <td>@instrument.Barcode</td>
                     <td>@instrument.ProductionYear</td>
                     <td>@instrument.Price</td>
+                    <td>@instrument.Picture</td>
                     <td><a asp-action="DeleteBrand" asp-route-id="@instrument.Id" class="btn btn-outline-danger">Delete</a></td>
                 </tr>
             }
