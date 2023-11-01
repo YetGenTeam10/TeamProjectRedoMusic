@@ -1,0 +1,32 @@
+﻿@using RedoMusic.Domain.Entities;
+@model List<Instrument>
+
+<div class="container mt-3">
+    <h2>Instruments</h2>
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Barcode</th>
+                <th>ProductionYear</th>
+                <th>Price</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var instrument in Model)
+            {
+                <tr>
+                    <td>@instrument.Name</td>
+                    <td>@instrument.Description</td>
+                    <td>@instrument.Barcode</td>
+                    <td>@instrument.ProductionYear</td>
+                    <td>@instrument.Price</td>
+                    <td>@instrument.Picture</td>
+                    <td><a asp-action="DeleteBrand" asp-route-id="@instrument.Id" class="btn btn-outline-danger">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

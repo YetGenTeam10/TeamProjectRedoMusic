@@ -9,8 +9,6 @@ namespace RedoMusic.Domain.Entities
 {
     public class Brand : EntityBase<Guid>
     {
-       
-
         public string Name { get; set; }   
 
         public string DisplayText { get; set; }

@@ -19,9 +19,8 @@ namespace RedoMusic.Persistence.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "Server=91.151.83.102;Port=5432;Database=!RedoMusicDbTeam10;User Id=ahmetkokteam;Password=obXRMG*U6rJ4R0cbHszpgEuFd;";
 
-            optionsBuilder.UseNpgsql(connectionString);
+            optionsBuilder.UseNpgsql(Configurations.GetString("ConnectionStrings:PostgreSQL"));
         }
     }
 }

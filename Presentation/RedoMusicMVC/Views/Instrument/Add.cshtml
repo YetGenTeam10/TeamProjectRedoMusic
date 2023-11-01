@@ -1,0 +1,34 @@
+﻿@model RedoMusic.Domain.Entities.Instrument
+
+<h2>Add Instrument</h2>
+<form method="post">
+    <div class="mb-3 mt-3">
+        <label class="form-label">Name:</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Description:</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Production Year:</label>
+        <input asp-for="ProductionYear" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price:</label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Barcode:</label>
+        <input asp-for="Barcode" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image:</label>
+        <input asp-for="Picture" class="form-control" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+

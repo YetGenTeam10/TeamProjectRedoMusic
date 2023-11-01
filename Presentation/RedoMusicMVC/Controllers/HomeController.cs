@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RedoMusic.Persistence;
 using RedoMusicMVC.Models;
 using System.Diagnostics;
 
@@ -15,6 +16,7 @@ namespace RedoMusicMVC.Controllers
 
         public IActionResult Index()
         {
+            Configurations.GetString("ConnectionStrings:PostgreSQL");
             return View();
         }
 
