@@ -21,5 +21,8 @@ namespace RedoMusic.Domain.Entities
         public DateTime? ProductionYear { get; set; }
 
         public decimal Price { get; set; }
+
+        // Livanur bunu silme lütfen categori ile ilişki kurdum :)
+        public Category Category { get; set; }
     }
 }
