@@ -1,20 +1,19 @@
 ﻿
 
-<h1>Category Add Page</h1>
-
-
 <div class="container">
-
     <div class="row">
-        <div class="col-8 mx-auto card p-2">
-            <form class="text-center" method="post">
-                <label>Category Name</label>
-                <input type="text" name="CategoryName" /><br />
-
-                <input type="submit" />
-
+        <div class="col-8 mx-auto card">
+            <h1 class="text-center">Category Add Page</h1>
+            <form method="post">
+                <div class="form-group">
+                    <label for="CategoryName">Category Name</label>              
+                    <input type="text" id="CategoryName" name="CategoryName" class="form-control">                   
+                </div>
+                <div class="text-center">
+                    <br />
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
         </div>
     </div>
 </div>
-
