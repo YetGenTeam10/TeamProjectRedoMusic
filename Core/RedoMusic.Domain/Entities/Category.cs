@@ -24,7 +24,5 @@ namespace RedoMusic.Domain.Entities
 
         public List<Instrument> InstrumentList { get; set; }
 
-        
-
     }
 }
