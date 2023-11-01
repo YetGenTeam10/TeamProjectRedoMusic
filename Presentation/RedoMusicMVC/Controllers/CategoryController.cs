@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RedoMusic.Domain.Entities;
 using RedoMusic.Persistence.Contexts;
+using RedoMusicMVC.Views.Models;
 
 namespace RedoMusicMVC.Controllers
 {
@@ -23,7 +24,6 @@ namespace RedoMusicMVC.Controllers
         }
 
         //Add Method
-
         [HttpGet]
         public IActionResult Add()
         {
@@ -61,7 +61,28 @@ namespace RedoMusicMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        
+        //Update Method
+        [HttpPost]
+        [Route("update/{id}")]
+        public IActionResult Update(string id, [FromBody] CategoryRequest categoryRequest)
+        {
+            var category = dbcontext.Categories.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault();
+
+            category.CategoryName= categoryRequest.CategoryName;
+            category.CreatedByUserId = categoryRequest.CreatedByUserId;
+            category.ModifiedByUserId = "nejlakucuk";
+            category.ModifiedOn = DateTime.UtcNow;
+            category.IsDeleted = false;
+
+            dbcontext.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
 
     }
 }
