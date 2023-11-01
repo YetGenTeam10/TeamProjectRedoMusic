@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RedoMusic.Domain.Entities;
 using RedoMusic.Persistence.Contexts;
 
@@ -6,19 +7,22 @@ namespace RedoMusicMVC.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly RedoMusicDbcontext _dbcontext;
+        private readonly RedoMusicDbcontext dbcontext;
+
 
         public CategoryController()
         {
-            _dbcontext = new();
+            dbcontext = new();
         }
 
         [HttpGet]
-        public IActionResult GetCategory()
+        public IActionResult Index()
         {
 
-            return View(_dbcontext.Categories.ToList());
+            return View(dbcontext.Categories.ToList());
         }
+
+        //Add Method
 
         [HttpGet]
         public IActionResult Add()
@@ -29,12 +33,35 @@ namespace RedoMusicMVC.Controllers
         [HttpPost]
         public IActionResult Add(string categoryName)
         {
-            Category category= new Category(categoryName);
-            _dbcontext.Categories.Add(category);
-            _dbcontext.SaveChanges();
+            Category category= new ();
+            category.CategoryName = categoryName;
+            category.CreatedOn = DateTime.UtcNow;
+            category.IsDeleted = false;
+            category.CreatedByUserId = "nejlakucuk";
+            dbcontext.Categories.Add(category);
+            dbcontext.SaveChanges();
 
-            return RedirectToAction("AddCategory");
+            return RedirectToAction("Add");
         }
+
+
+        // Delete Method
+        [HttpGet]
+        public IActionResult Delete(string id)
+        {
+            var category= dbcontext.Categories.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault();
+            dbcontext.Categories.Remove(category);
+
+            category.DeletedByUserId = "nejlakucuk";
+            category.DeletedOn = DateTime.UtcNow;
+            category.IsDeleted = true;
+
+            dbcontext.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        
 
     }
 }

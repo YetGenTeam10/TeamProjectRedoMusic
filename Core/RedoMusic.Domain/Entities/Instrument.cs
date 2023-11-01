@@ -19,8 +19,8 @@ namespace RedoMusic.Domain.Entities
         public string Picture { get; set; }
         public decimal Price { get; set; }
 
-        //Livanur lütfen bunu silme :) Category ile ilişkili çünkü :)
-        public Category Category { get; set; }
 
+        // Livanur bunu silme lütfen categori ile ilişki kurdum :)
+        public Category Category { get; set; }
     }
 }
