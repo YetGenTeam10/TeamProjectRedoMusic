@@ -10,17 +10,16 @@ namespace RedoMusicMVC.Controllers
     {
         private readonly RedoMusicDbcontext dbcontext;
 
-
         public CategoryController()
         {
             dbcontext = new();
         }
 
-        [HttpGet]
         public IActionResult Index()
         {
+            var category = dbcontext.Categories.ToList();
 
-            return View(dbcontext.Categories.ToList());
+            return View(category);
         }
 
         //Add Method
@@ -49,7 +48,9 @@ namespace RedoMusicMVC.Controllers
         [HttpGet]
         public IActionResult Delete(string id)
         {
+
             var category= dbcontext.Categories.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault();
+
             dbcontext.Categories.Remove(category);
 
             category.DeletedByUserId = "nejlakucuk";
@@ -64,11 +65,20 @@ namespace RedoMusicMVC.Controllers
         //Update Method
         [HttpPost]
         [Route("update/{id}")]
-        public IActionResult Update(string id, [FromBody] CategoryRequest categoryRequest)
+        public IActionResult Update(string id)
         {
+            CategoryRequest categoryRequest = new();
+
+            //id'ye baðlý olarak kategori getirme
             var category = dbcontext.Categories.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault();
 
-            category.CategoryName= categoryRequest.CategoryName;
+            // güncellenen name null deðilse update iþlemi gerçekleþir.
+            if (categoryRequest.CategoryName != null)
+            {
+                category.CategoryName = categoryRequest.CategoryName;
+            }
+
+                
             category.CreatedByUserId = categoryRequest.CreatedByUserId;
             category.ModifiedByUserId = "nejlakucuk";
             category.ModifiedOn = DateTime.UtcNow;
@@ -78,9 +88,6 @@ namespace RedoMusicMVC.Controllers
 
             return RedirectToAction("Index");
         }
-
-
-
 
 
 
