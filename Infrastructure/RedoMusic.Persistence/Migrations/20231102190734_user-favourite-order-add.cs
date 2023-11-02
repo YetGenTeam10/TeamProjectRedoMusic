@@ -22,10 +22,10 @@ namespace RedoMusic.Persistence.Migrations
                     CreatedByUserId = table.Column<string>(type: "text", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedByUserId = table.Column<string>(type: "text", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     DeletedByUserId = table.Column<string>(type: "text", nullable: true),
-                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -42,10 +42,10 @@ namespace RedoMusic.Persistence.Migrations
                     CreatedByUserId = table.Column<string>(type: "text", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedByUserId = table.Column<string>(type: "text", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     DeletedByUserId = table.Column<string>(type: "text", nullable: true),
-                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -75,10 +75,10 @@ namespace RedoMusic.Persistence.Migrations
                     CreatedByUserId = table.Column<string>(type: "text", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedByUserId = table.Column<string>(type: "text", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     DeletedByUserId = table.Column<string>(type: "text", nullable: true),
-                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -109,10 +109,10 @@ namespace RedoMusic.Persistence.Migrations
                     CreatedByUserId = table.Column<string>(type: "text", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedByUserId = table.Column<string>(type: "text", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     DeletedByUserId = table.Column<string>(type: "text", nullable: true),
-                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
                 {

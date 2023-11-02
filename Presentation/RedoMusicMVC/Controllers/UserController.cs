@@ -19,13 +19,13 @@ namespace RedoMusicMVC.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult Add()
+		public IActionResult Register()
 		{
 			return View();
 		}
 
         [HttpPost]
-        public void Add(string name, string email, string password)
+        public RedirectToActionResult Register(string name, string email, string password)
         {
             bool isEmailInUse = _redoMusicDbContext.Users.Any(u => u.UserEmail == email);
 
@@ -33,6 +33,7 @@ namespace RedoMusicMVC.Controllers
             {
                 // E-posta zaten kullanılıyorsa burada işlem yapabilirsiniz
                 // Örneğin, kullanıcıya bir hata mesajı gösterip geri dönebilirsiniz.
+                return RedirectToAction("Register");
             }
             else
             {
@@ -40,16 +41,49 @@ namespace RedoMusicMVC.Controllers
                 User user = new User(name, email, password);
                 _redoMusicDbContext.Users.Add(user);
                 _redoMusicDbContext.SaveChanges();
+                return RedirectToAction("Login");
 
                 // Kullanıcı başarıyla eklendiyse başka bir işlem yapabilirsiniz
             }
+
         }
 
+        [HttpGet]
         public IActionResult Login()
 		{
 			return View();
 		}
 
+        [HttpPost]
+        public IActionResult Login(string email, string password)
+        {
+            bool isEmailInUse = _redoMusicDbContext.Users.Any(u => u.UserEmail == email);
 
-	}
+            if (!isEmailInUse)
+            {
+                //Email Not Found
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                string userPassword = _redoMusicDbContext.Users
+                    .Where(u => u.UserEmail == email)
+                    .Select(u => u.Password)
+                    .FirstOrDefault();
+
+                if (userPassword != null && string.Equals(userPassword, password))
+                {
+                    // Basarılı Giris
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
+            }
+            return View();
+        }
+
+
+    }
 }
