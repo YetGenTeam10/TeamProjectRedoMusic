@@ -63,9 +63,9 @@ namespace RedoMusicMVC.Controllers
         }
 
         //Update Method
-        [HttpPost]
-        [Route("update/{id}")]
-        public IActionResult Update(string id)
+        [HttpGet]
+        [Route("[controller]/[action]/{id}")]
+        public IActionResult Update([FromRoute] string id)
         {
             CategoryRequest categoryRequest = new();
 
@@ -86,7 +86,7 @@ namespace RedoMusicMVC.Controllers
 
             dbcontext.SaveChanges();
 
-            return RedirectToAction("Index");
+            return View();
         }
 
 
