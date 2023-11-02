@@ -18,7 +18,7 @@ namespace RedoMusic.Domain.Entities
         public string Barcode {  get; set; }
         public string Picture { get; set; }
         public decimal Price { get; set; }
-
+        //public List<Brand> Brands { get; set; }
 
         // Livanur bunu silme lütfen categori ile ilişki kurdum :)
         public Category Category { get; set; }
