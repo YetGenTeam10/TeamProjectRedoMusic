@@ -101,7 +101,7 @@ namespace RedoMusicMVC.Controllers
                               .FirstOrDefault(c => c.Id == Guid.Parse(categoryId));
 
 
-            return View();
+            return View(category);
         }
 
 
