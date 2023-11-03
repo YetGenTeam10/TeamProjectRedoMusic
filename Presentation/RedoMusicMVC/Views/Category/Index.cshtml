@@ -15,6 +15,7 @@
         <thead>
             <tr>
                 <th>Category</th>
+                <th><a asp-action="Add" asp-route-id="id" class="btn bg-primary text-black">Add</a></th>
                 
             </tr>
         </thead>
@@ -23,8 +24,9 @@
             {
                 <tr>
                     <td>@category.CategoryName</td>
-                    <td><a asp-action="Delete" asp-route-id="@category.Id" class="btn btn-outline-danger">Delete</a></td>
-                    <td><a asp-action="Update" asp-route-id="@category.Id" class="btn btn-outline-danger">Update</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@category.Id" class="btn bg-danger text-black">Delete</a></td>
+                    <td><a asp-action="Update" asp-route-id="@category.Id" class="btn bg-warning text-black">Update</a></td>
+                    <td><a asp-action="GetAllInstrument" asp-route-id="@category.Id" class="btn bg-success text-black">Get All Instrument</a></td>
 
                 </tr>
             }
