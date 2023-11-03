@@ -40,7 +40,7 @@ namespace RedoMusicMVC.Controllers
             dbcontext.Categories.Add(category);
             dbcontext.SaveChanges();
 
-            return RedirectToAction("Add");
+            return View();
         }
 
 
@@ -88,6 +88,22 @@ namespace RedoMusicMVC.Controllers
 
             return View();
         }
+
+
+        // GetAllInstrument
+        [HttpGet]
+        [Route("[controller]/[action]/{categoryId}")]
+        public IActionResult GetAllInstrument(string categoryId)
+        {
+            
+                var category = dbcontext.Categories
+                              .Include(c => c.InstrumentList)
+                              .FirstOrDefault(c => c.Id == Guid.Parse(categoryId));
+
+
+            return View();
+        }
+
 
 
 
