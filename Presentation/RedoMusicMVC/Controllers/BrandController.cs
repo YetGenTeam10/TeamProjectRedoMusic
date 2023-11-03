@@ -14,6 +14,7 @@ namespace RedoMusicMVC.Controllers
             dbcontext = new RedoMusicDbcontext();
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();

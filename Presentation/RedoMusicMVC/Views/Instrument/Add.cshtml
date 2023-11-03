@@ -16,37 +16,37 @@
     <form method="post">
         <div class="mb-3 mt-3">
             <label class="form-label"><strong>Name:</strong></label>
-            <input asp-for="Instrument.Name" class="form-control" required />
+            <input asp-for="Instrument.Name" class="form-control" name="name" required />
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
         </div>
         <div class="mb-3">
             <label class="form-label"><strong>Description:</strong></label>
-            <input asp-for="Instrument.Description" class="form-control" required />
+            <input asp-for="Instrument.Description" class="form-control" name="description" required />
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
         </div>
         <div class="mb-3">
             <label class="form-label"><strong>Production Year:</strong></label>
-            <input asp-for="Instrument.ProductionYear" class="form-control" required />
+            <input asp-for="Instrument.ProductionYear" class="form-control" name="productionYear" required />
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
         </div>
         <div class="mb-3">
             <label class="form-label"><strong>Price:</strong></label>
-            <input asp-for="Instrument.Price" class="form-control" required />
+            <input asp-for="Instrument.Price" class="form-control" name="price" required />
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
         </div>
         <div class="mb-3">
             <label class="form-label"><strong>Barcode:</strong></label>
-            <input asp-for="Instrument.Barcode" class="form-control" required />
+            <input asp-for="Instrument.Barcode" class="form-control" name="barcode" required />
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
         </div>
         <div class="mb-3">
             <label class="form-label"><strong>Color:</strong></label>
-            <select asp-for="Instrument.Color" class="form-select" required>
+            <select asp-for="Instrument.Color" class="form-select" name="color" required>
                 <option value="0">Red</option>
                 <option value="1">Blue</option>
                 <option value="2">Green</option>
@@ -62,7 +62,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label"><strong>Image:</strong></label>
-            <input asp-for="Instrument.Picture" class="form-control" required />
+            <input asp-for="Instrument.Picture" class="form-control" name="pictureUrl" required />
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
         </div>
