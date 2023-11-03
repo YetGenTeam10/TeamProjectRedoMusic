@@ -1,0 +1,67 @@
+﻿@model RedoMusicMVC.Models.InstrumentAddBrandCategory
+
+<h2 style="color: navy;">Update Instrument</h2>
+
+<form method="post">
+    <div class="mb-3 mt-3">
+        <label class="form-label">Name:</label>
+        <input asp-for="Instrument.Name" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Price:</label>
+        <input asp-for="Instrument.Price" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Color:</label>
+        <select asp-for="Instrument.Color" class="form-select" required>
+            <option value="0">Red</option>
+            <option value="1">Blue</option>
+            <option value="2">Green</option>
+            <option value="3">Yellow</option>
+            <option value="4">Orange</option>
+            <option value="5">Purple</option>
+            <option value="6">Pink</option>
+            <option value="7">Teal</option>
+            <option value="8">Brown</option>
+            <option value="9">Gray</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Barcode:</label>
+        <input asp-for="Instrument.Barcode" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Description:</label>
+        <input asp-for="Instrument.Description" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Production Year:</label>
+        <input asp-for="Instrument.ProductionYear" class="form-control" />
+    </div>
+
+
+    <br />
+    <select name="brandId" class="form-select" required>
+        <option value="">Select a Brand</option>
+        @foreach (var brand in Model.Brands)
+        {
+            <option value="@brand.Id">@brand.Name</option>
+        }
+    </select>
+    <select name="categoryId" class="form-select" required>
+        <option value="">Select a Category</option>
+        @foreach (var category in Model.Categories)
+        {
+            <option value="@category.Id">@category.CategoryName</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
