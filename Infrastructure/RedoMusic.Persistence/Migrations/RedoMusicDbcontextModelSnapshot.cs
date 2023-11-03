@@ -63,7 +63,7 @@ namespace RedoMusic.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brands", (string)null);
                 });
 
             modelBuilder.Entity("RedoMusic.Domain.Entities.Category", b =>
@@ -99,7 +99,7 @@ namespace RedoMusic.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("RedoMusic.Domain.Entities.Instrument", b =>
@@ -166,7 +166,7 @@ namespace RedoMusic.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Instruments");
+                    b.ToTable("Instruments", (string)null);
                 });
 
             modelBuilder.Entity("RedoMusic.Domain.Entities.Instrument", b =>

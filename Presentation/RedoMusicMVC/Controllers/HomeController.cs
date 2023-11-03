@@ -16,7 +16,6 @@ namespace RedoMusicMVC.Controllers
 
         public IActionResult Index()
         {
-            Configurations.GetString("ConnectionStrings:PostgreSQL");
             return View();
         }
 

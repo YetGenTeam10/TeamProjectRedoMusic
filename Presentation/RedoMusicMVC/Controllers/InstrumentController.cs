@@ -23,7 +23,7 @@ namespace RedoMusicMVC.Controllers
             return View(products);
         }
 
-        //hata alıyorum:
+        //Add method:
         [HttpGet]
         public IActionResult Add()
         {
@@ -40,32 +40,6 @@ namespace RedoMusicMVC.Controllers
 
             return View(addInstruments);
         }
-
-        /*[HttpGet]
-        public IActionResult Add()
-        {
-            var brands = _dbContext.Brands.ToList();
-            var categories = _dbContext.Categories.ToList();
-
-            if (brands == null)
-            {
-                brands = new List<Brand>(); // Brands null ise boş bir liste oluştur.
-            }
-
-            if (categories == null)
-            {
-                categories = new List<Category>(); // Categories null ise boş bir liste oluştur.
-            }
-
-            var addInstruments = new InstrumentAddBrandCategory
-            {
-                Brands = brands,
-                Categories = categories,
-                Instrument = new Instrument()
-            };
-
-            return View(addInstruments);
-        }*/
 
 
         [HttpPost]
@@ -88,9 +62,9 @@ namespace RedoMusicMVC.Controllers
                 Price = decimal.Parse(price),
                 Picture = pictureUrl,  // Burada "Picture" özelliğine bir değer atıyoruz
                 Color = (RedoMusic.Domain.Enums.ColorType)Convert.ToInt32(color),
+                ProductionYear = DateTime.UtcNow,
                 Brand = brand,
                 Category = category,
-                ProductionYear = DateTime.UtcNow,
                 CreatedOn = DateTime.UtcNow,
                 IsDeleted = false,
                 CreatedByUserId = "LivanurErdem",
@@ -101,7 +75,7 @@ namespace RedoMusicMVC.Controllers
             _dbContext.Instruments.Add(instrument);
 
             _dbContext.SaveChanges();
-            
+
             return RedirectToAction("add");
         }
         [HttpGet]
@@ -118,105 +92,11 @@ namespace RedoMusicMVC.Controllers
             instrument.IsDeleted = true;
 
             _dbContext.SaveChanges();
-          
+
             return RedirectToAction("index");
         }
 
         //Update method:
-        //nejla ile yaptığım:
-       /* [HttpGet]
-        [Route("[controller]/[action]/{id}")]
-        public IActionResult UpdateInstrument([FromRoute] string id)
-        {  
-            InstrumentRequest instrumentRequest = new();
-          
-                var instrument = _dbContext.Instruments.FirstOrDefault(x => x.Id == Guid.Parse(id));
-                if (instrument != null)
-                {
-                    instrument.Name = instrumentRequest.Name;
-                    instrument.Description = instrumentRequest.Description;
-                    instrument.Barcode = instrumentRequest.Barcode;
-                    instrument.ProductionYear = instrumentRequest.ProductionYear;
-                    instrument.Price = instrumentRequest.Price;
-                    instrument.Picture = instrumentRequest.Picture;
-                    instrument.Color = instrumentRequest.Color;
-                    instrument.Brand = instrumentRequest.Brand;
-                    instrument.Category = instrumentRequest.Category;
-
-       
-                }
-
-            instrument.CreatedByUserId = "LivanurErdem";
-
-           var brands = _dbContext.Brands.ToList();
-            var categories = _dbContext.Categories.ToList();
-
-            var addInstrument = new InstrumentAddBrandCategory
-            {
-                Instrument = instrument,
-                Brands = brands,
-                Categories = categories
-            };
-
-         _dbContext.SaveChanges();
-
-          return RedirectToAction("UpdateInstrument");
-      }*/
-
-        //ilk yaptığım
-        /* [HttpGet]
-         public IActionResult UpdateInstrument(Guid id)
-         {
-             var instrument = _dbContext.Instruments.FirstOrDefault(x => x.Id == id);
-             var brands = _dbContext.Brands.ToList();
-             var categories = _dbContext.Categories.ToList();
-
-             var addInstrument = new InstrumentAddBrandCategory
-             {
-                 Instrument = instrument,
-                 Brands = brands,
-                 Categories = categories
-             };
-
-             return View(addInstrument);
-         }
-
-         [HttpPost]
-         public IActionResult UpdateInstrument(Instrument instrument)
-         {
-             if (ModelState.IsValid)
-             {
-                 var existingInstrument = _dbContext.Instruments.FirstOrDefault(x => x.Id == instrument.Id);
-                 if (existingInstrument != null)
-                 {
-                     existingInstrument.Name = instrument.Name;
-                     existingInstrument.Description = instrument.Description;
-                     existingInstrument.Barcode = instrument.Barcode;
-                     existingInstrument.ProductionYear = instrument.ProductionYear;
-                     existingInstrument.Price = instrument.Price;
-                     existingInstrument.Picture = instrument.Picture;
-                     existingInstrument.Color = instrument.Color;
-                     existingInstrument.Brand = instrument.Brand;
-                     existingInstrument.Category = instrument.Category;
-
-                     _dbContext.SaveChanges();
-                 }
-
-                 return RedirectToAction("Index");
-             }
-
-             var brands = _dbContext.Brands.ToList();
-             var categories = _dbContext.Categories.ToList();
-
-             var addInstrument = new InstrumentAddBrandCategory
-             {
-                 Instrument = instrument,
-                 Brands = brands,
-                 Categories = categories
-             };
-
-             return View(addInstrument);
-         }*/
         [HttpGet]
         public IActionResult UpdateInstrument(Guid id)
         {
@@ -270,8 +150,6 @@ namespace RedoMusicMVC.Controllers
 
             return View(addInstrument);
         }
-
-
 
 
         [HttpGet]
