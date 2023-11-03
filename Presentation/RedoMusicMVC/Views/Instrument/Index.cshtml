@@ -1,17 +1,22 @@
-﻿@using RedoMusic.Domain.Entities;
+﻿@using RedoMusic.Domain.Entities
 @model List<Instrument>
 
 <div class="container mt-3">
-    <h2>Instruments</h2>
+    <h2 style="color: navy;">Instruments</h2>
     <table class="table table-dark table-hover">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Barcode</th>
-                <th>ProductionYear</th>
                 <th>Price</th>
                 <th>Picture</th>
+                <th>Color</th>
+                <th>ProductionYear</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th></th> <!-- Boş hücre ekleyerek "Delete" butonunun olduğu sütunu oluşturdum -->
+                <th></th> <!-- Boş hücre ekleyerek "Update" butonunun olduğu sütunu oluşturdum -->
             </tr>
         </thead>
         <tbody>
@@ -23,8 +28,15 @@
                     <td>@instrument.Barcode</td>
                     <td>@instrument.ProductionYear</td>
                     <td>@instrument.Price</td>
+                    <td>@instrument.Color</td>
                     <td>@instrument.Picture</td>
+                    <td>@instrument.Category</td>
+                    <td>@instrument.Brand</td>
                     <td><a asp-action="DeleteInstrument" asp-route-id="@instrument.Id" class="btn btn-outline-danger">Delete</a></td>
+                    <td>
+                        <a asp-action="UpdateInstrument" asp-route-id="@instrument.Id" class="btn btn-outline-primary">Update</a>
+                    </td>
+
                 </tr>
             }
         </tbody>
