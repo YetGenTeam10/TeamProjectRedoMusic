@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace RedoMusic.Domain.Entities
 {
-    internal class Class1
+    public class User : EntityBase<Guid>
     {
+        public User(string userName, string userEmail, string password)
+        {
+            UserName = userName;
+            UserEmail = userEmail;
+            Password = password;
+        }
+
+        public string UserName { get; set; }
+
+        public string UserEmail { get; set; }
+
+        public string Password { get; set; }
     }
 }

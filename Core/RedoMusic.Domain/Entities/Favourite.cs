@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace RedoMusic.Domain.Entities
+{
+	public class Favourite : EntityBase<Guid>
+	{
+		public User User { get; set; }
+
+		public Instrument Instrument { get; set; }
+		
+		public DateTime FavouriteAddTime { get; set; }
+	}
+}
