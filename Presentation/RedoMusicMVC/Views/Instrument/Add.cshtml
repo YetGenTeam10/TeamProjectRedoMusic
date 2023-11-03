@@ -1,6 +1,8 @@
-﻿@model RedoMusic.Domain.Entities.Instrument
+﻿@using RedoMusic.Domain.Entities
+@model Instrument
 
 <h2>Add Instrument</h2>
+
 <form method="post">
     <div class="mb-3 mt-3">
         <label class="form-label">Name:</label>
@@ -27,8 +29,11 @@
         <input asp-for="Picture" class="form-control" />
     </div>
     <br />
+    <select asp-for="Brand.Id" asp-items="ViewBag.BrandList">
+        <option value="">Select a Brand</option>
+    </select>
+    <br />
+    <br />
+
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-
-
