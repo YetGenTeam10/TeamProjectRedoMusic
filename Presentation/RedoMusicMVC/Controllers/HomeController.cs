@@ -54,10 +54,6 @@ namespace RedoMusicMVC.Controllers
 
 
         }
-        public class MyViewModel
-        {
-            public User User { get; set; }
-            public List<Instrument> Instruments { get; set; }
-        }
+        
     }
 }
