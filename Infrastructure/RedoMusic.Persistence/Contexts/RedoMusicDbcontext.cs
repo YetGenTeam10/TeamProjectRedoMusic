@@ -19,7 +19,7 @@ namespace RedoMusic.Persistence.Contexts
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<Favourite> Favorites { get; set; }
+        public DbSet<Favourite> Favourites { get; set; }
 
         public DbSet<Order> Orders { get; set; }
 

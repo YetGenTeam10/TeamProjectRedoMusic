@@ -8,6 +8,8 @@ namespace RedoMusic.Domain.Entities
 {
     public class User : EntityBase<Guid>
     {
+        public User() { }
+
         public User(string userName, string userEmail, string password)
         {
             UserName = userName;

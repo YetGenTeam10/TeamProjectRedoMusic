@@ -10,6 +10,23 @@ namespace RedoMusic.Domain.Entities
 {
     public class Instrument : EntityBase<Guid>
     {
+        public Instrument()
+        {
+        }
+
+        public Instrument(string name, string description, Brand brand, ColorType color, DateTime? productionYear, string barcode, string picture, decimal price, Category category)
+        {
+            Name = name;
+            Description = description;
+            Brand = brand;
+            Color = color;
+            ProductionYear = productionYear;
+            Barcode = barcode;
+            Picture = picture;
+            Price = price;
+            Category = category;
+        }
+
         public string Name { get; set; }
         public string Description { get; set; }
         public Brand Brand { get; set; }

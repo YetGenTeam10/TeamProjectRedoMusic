@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using RedoMusic.Domain.Entities;
 using RedoMusic.Persistence.Contexts;
 
@@ -66,14 +67,14 @@ namespace RedoMusicMVC.Controllers
             }
             else
             {
-                string userPassword = _redoMusicDbContext.Users
-                    .Where(u => u.UserEmail == email)
-                    .Select(u => u.Password)
-                    .FirstOrDefault();
+                User user = _redoMusicDbContext.Users
+                                .FirstOrDefault(u => u.UserEmail == email);
 
-                if (userPassword != null && string.Equals(userPassword, password))
+                if (user.Password != null && string.Equals(user.Password, password))
                 {
                     // Basarılı Giris
+                    HttpContext.Session.SetString("userId", user.Id.ToString());
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -81,7 +82,6 @@ namespace RedoMusicMVC.Controllers
                     return RedirectToAction("Login");
                 }
             }
-            return View();
         }
 
 
