@@ -22,9 +22,8 @@ namespace RedoMusicMVC.Controllers
         public IActionResult Index()
         {
 
-            
             var instruments = _redoMusicDbcontext.Instruments.ToList();
-            MyViewModel myViewModel = new MyViewModel();
+            MyViewModel myViewModel = new();
 
             // Başka bir sayfada kullanıcı kimlik bilgisine erişim
             Guid userId;
@@ -53,10 +52,7 @@ namespace RedoMusicMVC.Controllers
             return View(myViewModel);
 
 
-}
+        }
 
-public class MyViewModel
-{
-    public User User { get; set; }
-    public List<Instrument> Instruments { get; set; }
+    }
 }
