@@ -1,5 +1,5 @@
 # 🎶 TeamProjectRedoMusic 🎶
-## 🚨 Bize Ulaş 🚨
+## 🚨 Bize Ulaşın 🚨
 🌐 [Furkan Mert Mısırlı Linkedin](http://www.linkedin.com/in/furkan-mert-mısırlı)  
 🌐 [Livanur Erdem Linkedin](http://www.linkedin.com/in/livanurerdem)  
 🌐 [Şükran Feyza Öğmüş Linkedin](http://www.linkedin.com/in/sukranfeyzaogmus)  
