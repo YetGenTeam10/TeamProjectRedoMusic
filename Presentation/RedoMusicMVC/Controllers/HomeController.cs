@@ -22,7 +22,7 @@ namespace RedoMusicMVC.Controllers
         public IActionResult Index()
         {
 
-            
+
             var instruments = _redoMusicDbcontext.Instruments.ToList();
             MyViewModel myViewModel = new MyViewModel();
 
@@ -53,10 +53,11 @@ namespace RedoMusicMVC.Controllers
             return View(myViewModel);
 
 
-}
-
-public class MyViewModel
-{
-    public User User { get; set; }
-    public List<Instrument> Instruments { get; set; }
+        }
+        public class MyViewModel
+        {
+            public User User { get; set; }
+            public List<Instrument> Instruments { get; set; }
+        }
+    }
 }
