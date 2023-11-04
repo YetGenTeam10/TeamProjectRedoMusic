@@ -1,15 +1,17 @@
 ﻿@using RedoMusic.Domain.Entities
 @model List<Instrument>
 
-<div class="container mt-3">
-    <h2 style="color: navy;">Instruments</h2>
+<div class="container mt-3 text-center">
+    <h2 style="color: navy;">
+        🎻 Instruments 🎸
+    </h2>
     <table class="table table-dark table-hover">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Barcode</th>
-                <th>ProductionYear</th>
+                <th>Production Year</th>
                 <th>Price</th>
                 <th>Color</th>
                 <th>Picture</th>
@@ -17,8 +19,7 @@
                 <th>Brand</th>
                 <th></th> <!-- Boş hücre ekleyerek "Delete" butonunun olduğu sütunu oluşturdum -->
                 <th></th> <!-- Boş hücre ekleyerek "Update" butonunun olduğu sütunu oluşturdum -->
-                <th></th> <!-- Boş hücre ekleyerek "Update" butonunun olduğu sütunu oluşturdum -->
-
+                <th></th> <!-- Boş hücre ekleyerek "Details" butonunun olduğu sütunu oluşturdum -->
             </tr>
         </thead>
         <tbody>
@@ -26,12 +27,18 @@
             {
                 <tr>
                     <td>@instrument.Name</td>
-                    <td>@instrument.Description</td>
+                    <td>
+                        <div style="max-width: 200px; word-wrap: break-word;">
+                            @instrument.Description
+                        </div>
+                    </td>
                     <td>@instrument.Barcode</td>
                     <td>@instrument.ProductionYear</td>
                     <td>@instrument.Price</td>
                     <td>@instrument.Color</td>
-                    <td>@instrument.Picture</td>
+                    <td>
+                        <img src="@instrument.Picture" alt="@instrument.Name" style="max-width: 100px;" />
+                    </td>
                     <td>
                         @if (instrument.Category != null)
                         {
