@@ -5,7 +5,6 @@ using RedoMusic.Domain.Entities;
 using RedoMusic.Domain.Enums;
 using RedoMusic.Persistence.Contexts;
 using RedoMusicMVC.Models;
-using RedoMusicMVC.Views.Models;
 using System.Drawing.Drawing2D;
 
 namespace RedoMusicMVC.Controllers

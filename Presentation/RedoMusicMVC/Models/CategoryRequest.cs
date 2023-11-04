@@ -1,4 +1,4 @@
-﻿namespace RedoMusicMVC.Views.Models
+﻿namespace RedoMusicMVC.Models
 {
     public class CategoryRequest
     {

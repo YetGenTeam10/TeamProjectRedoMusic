@@ -1,7 +1,7 @@
 ﻿using RedoMusic.Domain.Entities;
 using RedoMusic.Domain.Enums;
 
-namespace RedoMusicMVC.Views.Models
+namespace RedoMusicMVC.Models
 {
     public class InstrumentRequest
     {

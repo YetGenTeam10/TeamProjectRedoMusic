@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RedoMusic.Domain.Entities;
 using RedoMusic.Persistence.Contexts;
-using RedoMusicMVC.Views.Models;
+using RedoMusicMVC.Models;
 
 namespace RedoMusicMVC.Controllers
 {
