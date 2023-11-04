@@ -1,0 +1,63 @@
+﻿@model RedoMusicMVC.Models.InstrumentAddBrandCategory
+
+<h2 style="color: navy;">Update Instrument</h2>
+
+<form method="post">
+    <div class="mb-3 mt-3">
+        <label class="form-label">Name:</label>
+        <input asp-for="Instrument.Name" class="form-control" name="name" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Description:</label>
+        <input asp-for="Instrument.Description" class="form-control" name="description" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Barcode:</label>
+        <input asp-for="Instrument.Barcode" class="form-control" name="barcode" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price:</label>
+        <input asp-for="Instrument.Price" class="form-control" name="price" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Picture:</label>
+        <input asp-for="Instrument.Picture" class="form-control" name="pictureUrl" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Production Year:</label>
+        <input asp-for="Instrument.ProductionYear" class="form-control" name="productionYear" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Color:</label>
+        <select asp-for="Instrument.Color" class="form-select" name="color" required>
+            <option value="1">Red</option>
+            <option value="2">Blue</option>
+            <option value="3">Green</option>
+            <option value="4">Yellow</option>
+            <option value="5">Orange</option>
+            <option value="6">Purple</option>
+            <option value="7">Pink</option>
+            <option value="8">Teal</option>
+            <option value="9">Brown</option>
+            <option value="10">Gray</option>
+        </select>
+    </div>
+
+    <br />
+    <select asp-for="Instrument.Brand.Id" class="form-select" required>
+        @foreach (var brand in Model.Brands)
+        {
+            <option value="@brand.Id">@brand.Name</option>
+        }
+    </select>
+    <select asp-for="Instrument.Category.Id" class="form-select" required>
+        @foreach (var category in Model.Categories)
+        {
+            <option value="@category.Id">@category.CategoryName</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

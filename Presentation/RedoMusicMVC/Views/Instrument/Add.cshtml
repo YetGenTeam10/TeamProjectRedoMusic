@@ -1,34 +1,90 @@
-﻿@model RedoMusic.Domain.Entities.Instrument
+﻿@using RedoMusic.Domain.Entities
+@model RedoMusicMVC.Models.InstrumentAddBrandCategory
 
-<h2>Add Instrument</h2>
-<form method="post">
-    <div class="mb-3 mt-3">
-        <label class="form-label">Name:</label>
-        <input asp-for="Name" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Description:</label>
-        <input asp-for="Description" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Production Year:</label>
-        <input asp-for="ProductionYear" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Price:</label>
-        <input asp-for="Price" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Barcode:</label>
-        <input asp-for="Barcode" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Image:</label>
-        <input asp-for="Picture" class="form-control" />
-    </div>
-    <br />
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color: navy;">🎸 🎹 Add Instrument</h2>
 
+    <form method="post">
+        <div class="mb-3 mt-3">
+            <label class="form-label"><strong>Name:</strong></label>
+            <input asp-for="Instrument.Name" class="form-control" name="name" required />
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><strong>Description:</strong></label>
+            <input asp-for="Instrument.Description" class="form-control" name="description" required />
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><strong>Production Year:</strong></label>
+            <input asp-for="Instrument.ProductionYear" class="form-control" name="productionYear" required />
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><strong>Price:</strong></label>
+            <input asp-for="Instrument.Price" class="form-control" name="price" required />
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><strong>Barcode:</strong></label>
+            <input asp-for="Instrument.Barcode" class="form-control" name="barcode" required />
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><strong>Color:</strong></label>
+            <select asp-for="Instrument.Color" class="form-select" name="color" required>
+                <option value="0">Red</option>
+                <option value="1">Blue</option>
+                <option value="2">Green</option>
+                <option value="3">Yellow</option>
+                <option value="4">Orange</option>
+                <option value="5">Purple</option>
+                <option value="6">Pink</option>
+                <option value="7">Teal</option>
+                <option value="8">Brown</option>
+                <option value="9">Gray</option>
+            </select>
+            <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><strong>Image:</strong></label>
+            <input asp-for="Instrument.Picture" class="form-control" name="pictureUrl" required />
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback" style="color: red;">Please fill out this field.</div>
+        </div>
+        <br />
+        <select name="brandId" class="form-select" required>
+            <option value=""><strong>Select a Brand</strong></option>
+            @foreach (var brand in Model.Brands)
+            {
+                <option value="@brand.Id">@brand.Name</option>
+            }
+        </select>
+        <select name="categoryId" class="form-select" required>
+            <option value=""><strong>Select a Category</strong></option>
+            @foreach (var category in Model.Categories)
+            {
+                <option value="@category.Id">@category.CategoryName</option>
+            }
+        </select>
+        <br />
+        <br />
 
-
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>

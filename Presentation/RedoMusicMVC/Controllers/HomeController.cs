@@ -21,6 +21,7 @@ namespace RedoMusicMVC.Controllers
 
         public IActionResult Index()
         {
+
             
             var instruments = _redoMusicDbcontext.Instruments.ToList();
             MyViewModel myViewModel = new MyViewModel();
@@ -50,19 +51,8 @@ namespace RedoMusicMVC.Controllers
             myViewModel.Instruments = instruments;
 
             return View(myViewModel);
-        }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
 }
 
 public class MyViewModel

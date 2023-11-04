@@ -14,6 +14,7 @@ namespace RedoMusicMVC.Controllers
             dbcontext = new RedoMusicDbcontext();
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -27,14 +28,14 @@ namespace RedoMusicMVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add() 
+        public IActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Add(string brandName, string brandDisplayText, string brandAddress) 
-        { 
+        public IActionResult Add(string brandName, string brandDisplayText, string brandAddress)
+        {
             Brand brand = new Brand(brandName, brandDisplayText, brandAddress);
             dbcontext.Brands.Add(brand);
             dbcontext.SaveChanges();

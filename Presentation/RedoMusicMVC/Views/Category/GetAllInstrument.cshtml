@@ -1,0 +1,44 @@
+﻿@using RedoMusic.Domain.Entities;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Category
+
+<h2 class="text-center text-success text-uppercase"> Categori Name: @Model.CategoryName</h2>
+
+
+    @if (Model.InstrumentList != null)
+    {
+        
+
+    <table class="table table-striped table-bordered table-success">
+
+            <tr>
+                <th>Instrument</th>
+                <th>Description</th>
+                <th>ProductionYear</th>
+                <th>Brand</th>
+                <th>Price</th>
+                <th>Picture</th>
+            </tr>
+            @foreach (var instrument in Model.InstrumentList)
+            {
+                <tr>
+
+                    <td>@instrument.Name</td>
+				    <td>@instrument.Description</td>
+				    <td>@instrument.ProductionYear</td>
+				    <td>@instrument.Brand</td>          
+                    <td>@instrument.Price</td>
+                    <td><img src="@instrument.Picture" alt="@instrument.Name" width="70" height="100" /></td>
+
+                </tr>
+            }
+    </table>
+        
+
+    }
+

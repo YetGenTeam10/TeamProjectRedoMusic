@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{99899AD9-6961-435C-95F2-D46FD9FB45C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedoMusic.Domain", "Core\RedoMusic.Domain\RedoMusic.Domain.csproj", "{EC21C1CB-151B-4A2A-B35D-7A1D25009DB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedoMusic.Domain", "Core\RedoMusic.Domain\RedoMusic.Domain.csproj", "{EC21C1CB-151B-4A2A-B35D-7A1D25009DB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedoMusic.Persistence", "Infrastructure\RedoMusic.Persistence\RedoMusic.Persistence.csproj", "{35AE051C-90EF-461A-8CF8-32AC02465FF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedoMusic.Persistence", "Infrastructure\RedoMusic.Persistence\RedoMusic.Persistence.csproj", "{35AE051C-90EF-461A-8CF8-32AC02465FF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedoMusicMVC", "Presentation\RedoMusicMVC\RedoMusicMVC.csproj", "{BC9FD4B2-76EA-4C8D-BCCC-C3EEBE224B36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedoMusicMVC", "Presentation\RedoMusicMVC\RedoMusicMVC.csproj", "{BC9FD4B2-76EA-4C8D-BCCC-C3EEBE224B36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

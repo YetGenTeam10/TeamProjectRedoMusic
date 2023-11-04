@@ -4,27 +4,59 @@
 @{
 }
 
-<h1>Brand Add Page</h1>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: darkseagreen;
+        }
 
-<div class="container">
+        .container {
+            text-align: center;
+        }
 
-    <div class="row">
-        <div class="col-8 mx-auto card p-2">
-            <form class="text-center" method="post">
-                <label>Name</label>
-                <input type="text" name="brandName"/><br />
+        .card {
+            border: 2px solid darkgreen;
+            border-radius: 10px;
+            padding: 10px;
+        }
 
-                <label>DisplayText</label>
-                <input type="text" name="brandDisplayText" /><br />
+        label {
+            display: block;
+            margin-top: 10px;
+        }
 
-                <label>Address</label>
-                <input type="text" name="brandAddress" /><br />
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid darkgreen;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Brand Add</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto card">
+                <form class="text-center" method="post">
+                    <label>Name</label>
+                    <input type="text" name="brandName" /><br />
 
-                <input type="submit" />
+                    <label>DisplayText</label>
+                    <input type="text" name="brandDisplayText" /><br />
 
-            </form>
+                    <label>Address</label>
+                    <input type="text" name="brandAddress" /><br />
+
+                    <input type="submit" />
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</body>
+</html>
+
 
