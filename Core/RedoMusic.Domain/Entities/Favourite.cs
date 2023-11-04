@@ -10,7 +10,14 @@ namespace RedoMusic.Domain.Entities
 {
 	public class Favourite : EntityBase<Guid>
 	{
-		public User User { get; set; }
+        public Favourite() { }  
+        public Favourite(Instrument instrument, User user)
+        {
+            User = user;
+            Instrument = instrument;
+        }
+
+        public User User { get; set; }
 
 		public Instrument Instrument { get; set; }
 		

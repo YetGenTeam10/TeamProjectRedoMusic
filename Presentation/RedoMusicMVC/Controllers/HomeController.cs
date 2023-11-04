@@ -21,6 +21,7 @@ namespace RedoMusicMVC.Controllers
 
         public IActionResult Index()
         {
+            
             var instruments = _redoMusicDbcontext.Instruments.ToList();
             MyViewModel myViewModel = new MyViewModel();
 
@@ -29,6 +30,7 @@ namespace RedoMusicMVC.Controllers
             User user = new User();
             if (HttpContext.Session.GetString("userId") != null)
             {
+
                 userId = new Guid(HttpContext.Session.GetString("userId")); // Oturumdan userId'yi al
                 user = _redoMusicDbcontext.Users.FirstOrDefault(u => u.Id == userId);
 

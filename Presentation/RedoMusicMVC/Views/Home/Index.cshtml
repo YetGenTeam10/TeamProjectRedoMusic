@@ -10,7 +10,6 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 
-	<title>@Model.User.UserEmail</title>
 
 	<style>
 
@@ -169,9 +168,9 @@ a {
       width: 35px;
       height: 35px;
       display: inline-block;
-      background: #2f2f2f;
-      bottom: 15px;
-      left: 50%;
+      background: red;
+      top: 15px;
+      right: 3%;
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%);
@@ -659,12 +658,10 @@ textarea {
 
 			<div class="collapse navbar-collapse" id="navbarsFurni">
 				<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-					<li class="nav-item active">
-						<a class="nav-link" href="index.html">Home</a>
-					</li>
-					<li><a class="nav-link" href="shop.html">Shop</a></li>
-					<li><a class="nav-link" href="about.html">About us</a></li>
-					<li><a class="nav-link" href="services.html">Privacy</a></li>
+					<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+					<li><a class="nav-link" href="/Favourite">Favourites</a></li>
+					<li><a class="nav-link" href="/Cart">Cart</a></li>
+					<li><a class="nav-link" href="/Privacy">Privacy</a></li>
 				</ul>
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -689,18 +686,17 @@ textarea {
 	<div class="hero">
 		<div class="container">
 			<div class="row justify-content-between">
-				<div class="col-lg-5">
+				<div class="col-lg-4">
 					<div class="intro-excerpt">
 						<h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
 						<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
 						<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
 					</div>
 				</div>
-				<div class="col-lg-7">
-					<div class="hero-img-wrap">
-						<img src="images/couch.png" class="img-fluid">
-					</div>
-				</div>
+                <div class="col-12 col-md-6">
+                    <img src="https://cdn.shopify.com/s/files/1/0054/9466/9382/files/RECTANGLE_633a6f20-adcc-4b06-bc66-404bec71568b.png?v=1667298639" class="img-fluid">
+                </div>
+				
 			</div>
 		</div>
 	</div>
@@ -722,18 +718,22 @@ textarea {
                 @foreach(var instrument in Model.Instruments)
                 {
                     <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                        <a class="product-item" href="cart.html">
-                            <img src="@instrument.Picture" class="img-fluid">
-                            <h3 class="product-title">Nordic Chair</h3>
-                            <strong class="product-price">@instrument.Name</strong>
-
-                            <span class="icon-cross">
+                        <div class="product-item">
+                            <a href="">
                                 <img src="@instrument.Picture" class="img-fluid">
-                            </span>
-                        </a>
+                                <h3 class="product-title">Nordic Chair</h3>
+                                <strong class="product-price">@instrument.Name</strong>
+                            </a>
+                            <div class="icon-cross" id="favoriteIcon">
+                                <a href="/Favourite/Add?barcode=@instrument.Barcode">
+                                    <img width="40" height="40" src="https://cdn2.vectorstock.com/i/1000x1000/96/26/heart-red-color-with-empty-in-center-vector-20569626.jpg" onmouseover="hover(this);" onmouseout="unhover(this);" class="img-fluid" id="heartImage">
+                                    <p>Metin veya içerik</p>
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
                 }
-
 			</div>
 		</div>
 	</div>
@@ -1136,5 +1136,17 @@ textarea {
             // Kayıtlı bir kullanıcı kimliği bulunmuyor veya kullanıcı oturum açmamışsa uygun işlemleri yapabilirsiniz
         }
     });
+
+    function hover(element) {
+        element.setAttribute('src', 'https://freeiconshop.com/wp-content/uploads/edd/heart-outline-filled.png');
+
+    }
+
+    function unhover(element) {
+        element.setAttribute('src', 'https://cdn2.vectorstock.com/i/1000x1000/96/26/heart-red-color-with-empty-in-center-vector-20569626.jpg');
+    }
+
+
+
 </script>
 </html>
