@@ -22,7 +22,7 @@ namespace RedoMusicMVC.Controllers
             return View(category);
         }
 
-        //Add Method
+        // Add 
         [HttpGet]
         public IActionResult Add()
         {
@@ -44,7 +44,7 @@ namespace RedoMusicMVC.Controllers
         }
 
 
-        // Delete Method
+        // Delete
         [HttpGet]
         public IActionResult Delete(string id)
         {
@@ -62,7 +62,7 @@ namespace RedoMusicMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        //Update Method
+        // Update 
         [HttpGet]
         [Route("[controller]/[action]/{id}")]
         public IActionResult Update([FromRoute] string id)
