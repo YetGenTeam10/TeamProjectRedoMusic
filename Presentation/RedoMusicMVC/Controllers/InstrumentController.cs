@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RedoMusic.Domain.Entities;
+using RedoMusic.Domain.Enums;
 using RedoMusic.Persistence.Contexts;
 using RedoMusicMVC.Models;
 using RedoMusicMVC.Views.Models;
+using System.Drawing.Drawing2D;
 
 namespace RedoMusicMVC.Controllers
 {
@@ -18,7 +20,7 @@ namespace RedoMusicMVC.Controllers
         }
         public IActionResult Index()
         {
-            var products = _dbContext.Instruments.ToList();
+            var products = _dbContext.Instruments.Include(x => x.Brand).Include(x => x.Category).ToList();
 
             return View(products);
         }
@@ -47,6 +49,7 @@ namespace RedoMusicMVC.Controllers
         {
             var brand = _dbContext.Brands.Where(x => x.Id == Guid.Parse(brandId)).FirstOrDefault();
             var category = _dbContext.Categories.Where(x => x.Id == Guid.Parse(categoryId)).FirstOrDefault();
+
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(barcode) || string.IsNullOrEmpty(price))
             {
                 // Gerekli alanlar boşsa veya null ise, hata mesajı oluşturun ve geri dönün.
@@ -69,8 +72,6 @@ namespace RedoMusicMVC.Controllers
                 IsDeleted = false,
                 CreatedByUserId = "LivanurErdem",
             };
-
-
 
             _dbContext.Instruments.Add(instrument);
 
@@ -100,7 +101,7 @@ namespace RedoMusicMVC.Controllers
         [HttpGet]
         public IActionResult UpdateInstrument(Guid id)
         {
-            var instrument = _dbContext.Instruments.FirstOrDefault(x => x.Id == id);
+            var instrument = _dbContext.Instruments.Include(x => x.Brand).Include(x => x.Category).FirstOrDefault(x => x.Id == id);
             var brands = _dbContext.Brands.ToList();
             var categories = _dbContext.Categories.ToList();
 
@@ -115,22 +116,20 @@ namespace RedoMusicMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateInstrument(Instrument instrument)
+        public IActionResult UpdateInstrument(string id, string name, string description, string barcode, decimal price, string pictureUrl, DateTime? productionYear, ColorType color)
         {
             if (ModelState.IsValid)
             {
-                var existingInstrument = _dbContext.Instruments.FirstOrDefault(x => x.Id == instrument.Id);
+                var existingInstrument = _dbContext.Instruments.Include(x => x.Brand).Include(x => x.Category).FirstOrDefault(x => x.Id == Guid.Parse(id));
                 if (existingInstrument != null)
                 {
-                    existingInstrument.Name = instrument.Name;
-                    existingInstrument.Description = instrument.Description;
-                    existingInstrument.Barcode = instrument.Barcode;
-                    existingInstrument.ProductionYear = instrument.ProductionYear;
-                    existingInstrument.Price = instrument.Price;
-                    existingInstrument.Picture = instrument.Picture;
-                    existingInstrument.Color = instrument.Color;
-                    existingInstrument.Brand = instrument.Brand;
-                    existingInstrument.Category = instrument.Category;
+                    existingInstrument.Name = name;
+                    existingInstrument.Description = description;
+                    existingInstrument.Barcode = barcode;
+                    existingInstrument.Price = price;
+                    existingInstrument.Picture = pictureUrl;
+                    existingInstrument.ProductionYear = DateTime.UtcNow;
+                    existingInstrument.Color = color;
 
                     _dbContext.SaveChanges();
                 }
@@ -138,28 +137,63 @@ namespace RedoMusicMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            var brands = _dbContext.Brands.ToList();
-            var categories = _dbContext.Categories.ToList();
+            return RedirectToAction("Index");
 
-            var addInstrument = new InstrumentAddBrandCategory
-            {
-                Instrument = instrument,
-                Brands = brands,
-                Categories = categories
-            };
-
-            return View(addInstrument);
         }
+
+        //Update Method
+        /* [HttpGet]
+         [Route("[controller]/[action]/{id}")]
+         public IActionResult UpdateInstrument([FromRoute] string id)
+         {
+             InstrumentRequest instrumentRequest = new();
+
+             //id'ye bağlı olarak kategori getirme
+             var instrument = _dbContext.Instruments.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault();
+
+             // güncellenen name null değilse update işlemi gerçekleşir.
+             if (instrumentRequest.Name != null)
+             {
+                 instrument.Name = instrumentRequest.Name;
+                 instrument.Barcode = instrumentRequest.Barcode;
+                 instrument.Color = instrumentRequest.Color;
+                 instrument.Picture = instrumentRequest.Picture;
+                 instrument.Brand = instrumentRequest.Brand;
+                 instrument.Price = instrumentRequest.Price;
+                 instrument.Category = instrumentRequest.Category;
+                 instrument.ProductionYear = instrumentRequest.ProductionYear;
+                
+             }
+
+
+             instrument.CreatedByUserId = instrumentRequest.CreatedByUserId;
+             instrument.ModifiedByUserId = "LivanurErdem";
+             instrument.ModifiedOn = DateTime.UtcNow;
+             instrument.IsDeleted = false;
+
+             _dbContext.SaveChanges();
+
+             return View();
+         }*/
+
+
 
 
         [HttpGet]
         [Route("[controller]/[action]/{id}")]
-        public IActionResult Inspect(string id)
+        public IActionResult Details(string id)
         {
             var instrument = _dbContext.Instruments.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault();
 
+            if (instrument != null)
+            {
+                // Instrument nesnesinin Picture özelliğinde URL varsa, resmi görüntüle.
+                if (!string.IsNullOrEmpty(instrument.Picture))
+                {
+                    return View(instrument);
+                }
+            }
             _dbContext.SaveChanges();
-
             return View(instrument);
         }
 

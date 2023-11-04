@@ -5,7 +5,7 @@
 <form method="post">
     <div class="mb-3 mt-3">
         <label class="form-label">Name:</label>
-        <input asp-for="Instrument.Name" class="form-control" name="name" readonly />
+        <input asp-for="Instrument.Name" class="form-control" name="name" required />
     </div>
     <div class="mb-3">
         <label class="form-label">Description:</label>
@@ -27,34 +27,30 @@
         <label class="form-label">Production Year:</label>
         <input asp-for="Instrument.ProductionYear" class="form-control" name="productionYear" required />
     </div>
-
-
     <div class="mb-3">
         <label class="form-label">Color:</label>
         <select asp-for="Instrument.Color" class="form-select" name="color" required>
-            <option value="0">Red</option>
-            <option value="1">Blue</option>
-            <option value="2">Green</option>
-            <option value="3">Yellow</option>
-            <option value="4">Orange</option>
-            <option value="5">Purple</option>
-            <option value="6">Pink</option>
-            <option value="7">Teal</option>
-            <option value="8">Brown</option>
-            <option value="9">Gray</option>
+            <option value="1">Red</option>
+            <option value="2">Blue</option>
+            <option value="3">Green</option>
+            <option value="4">Yellow</option>
+            <option value="5">Orange</option>
+            <option value="6">Purple</option>
+            <option value="7">Pink</option>
+            <option value="8">Teal</option>
+            <option value="9">Brown</option>
+            <option value="10">Gray</option>
         </select>
     </div>
 
     <br />
-    <select name="brandId" class="form-select" required>
-        <option value="">Select a Brand</option>
+    <select asp-for="Instrument.Brand.Id" class="form-select" required>
         @foreach (var brand in Model.Brands)
         {
             <option value="@brand.Id">@brand.Name</option>
         }
     </select>
-    <select name="categoryId" class="form-select" required>
-        <option value="">Select a Category</option>
+    <select asp-for="Instrument.Category.Id" class="form-select" required>
         @foreach (var category in Model.Categories)
         {
             <option value="@category.Id">@category.CategoryName</option>

@@ -17,6 +17,8 @@
                 <th>Brand</th>
                 <th></th> <!-- Boş hücre ekleyerek "Delete" butonunun olduğu sütunu oluşturdum -->
                 <th></th> <!-- Boş hücre ekleyerek "Update" butonunun olduğu sütunu oluşturdum -->
+                <th></th> <!-- Boş hücre ekleyerek "Update" butonunun olduğu sütunu oluşturdum -->
+
             </tr>
         </thead>
         <tbody>
@@ -30,13 +32,25 @@
                     <td>@instrument.Price</td>
                     <td>@instrument.Color</td>
                     <td>@instrument.Picture</td>
-                    <td>@instrument.Category</td>
-                    <td>@instrument.Brand</td>
+                    <td>
+                        @if (instrument.Category != null)
+                        {
+                            @instrument.Category.CategoryName
+                        }
+                    </td>
+                    <td>
+                        @if (instrument.Brand != null)
+                        {
+                            @instrument.Brand.Name
+                        }
+                    </td>
                     <td><a asp-action="DeleteInstrument" asp-route-id="@instrument.Id" class="btn btn-outline-danger">Delete</a></td>
                     <td>
                         <a asp-action="UpdateInstrument" asp-route-id="@instrument.Id" class="btn btn-outline-primary">Update</a>
                     </td>
-
+                    <td>
+                        <a asp-action="Details" asp-route-id="@instrument.Id" class="btn btn-outline-warning">Details</a>
+                    </td>
                 </tr>
             }
         </tbody>
