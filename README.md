@@ -35,11 +35,9 @@ Tamamladığımız RedoMusic projesi ile müzik enstrümanlarının detaylı inc
 
 
 ## Görev Dağılımı
-*Livanur Erdem →* RedoMusicDbContext, Instrument Controller ve MVC Instrument View
-*Nejla Küçük →* Category CRUD Operasyonları ve GetAllInstrument Method
-*Furkan Mert Mısırlı →* User ve Favourite Crud, Controller 
-*Şükran Feyza Öğmüş →*  Brand Update ve contact
-
+| Livanur Erdem | Nejla Küçük |Furkan Mert Mısırlı | Şükran Feyza Öğmüş |
+| -------- | -------- | -------- | -------- |
+| RedoMusicDbContext, Instrument Controller ve MVC Instrument View | Category CRUD Operasyonları ve GetAllInstrument Method |  User ve Favourite Crud, Controller |  Brand Update ve contact|
 
 ## Yaşadığınız Problemler
 *Livanur Erdem:* En çok Add ve UpdateInstrument metotlarında zorlandım. Oluşturduğum View sınıflarında HTML kısımlarını yazdıktan sonra çalıştırdığımda değerlere tam erişemedim ve null hatası alıp durdum. Bir sorunla karşılaştığımda öncelikle takım arkadaşlarımdan yardım istedim ve birlikte çözmeye çalıştık. Çözemediğim kısımlarda ise Hakan hocaya ulaşıp tüm sorunlarımı çözdüm.
