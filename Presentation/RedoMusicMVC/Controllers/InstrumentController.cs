@@ -141,7 +141,7 @@ namespace RedoMusicMVC.Controllers
 
         }
 
-        //Update Method
+        //Update Method2: 
         /* [HttpGet]
          [Route("[controller]/[action]/{id}")]
          public IActionResult UpdateInstrument([FromRoute] string id)
