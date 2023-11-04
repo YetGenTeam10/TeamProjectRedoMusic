@@ -7,16 +7,38 @@
 
 @model Category
 
-<h2>@Model</h2>
+<h2 class="text-center text-success text-uppercase"> Categori Name: @Model.CategoryName</h2>
 
-<ul>
+
     @if (Model.InstrumentList != null)
     {
-        @foreach (var instrument in Model.InstrumentList)
-        {
-            <li>@instrument.Name</li>
-            <li>@instrument.Price</li>
-            <li>@instrument.Picture</li>
-        }
+        
+
+    <table class="table table-striped table-bordered table-success">
+
+            <tr>
+                <th>Instrument</th>
+                <th>Description</th>
+                <th>ProductionYear</th>
+                <th>Brand</th>
+                <th>Price</th>
+                <th>Picture</th>
+            </tr>
+            @foreach (var instrument in Model.InstrumentList)
+            {
+                <tr>
+
+                    <td>@instrument.Name</td>
+				    <td>@instrument.Description</td>
+				    <td>@instrument.ProductionYear</td>
+				    <td>@instrument.Brand</td>          
+                    <td>@instrument.Price</td>
+                    <td><img src="@instrument.Picture" alt="@instrument.Name" width="70" height="100" /></td>
+
+                </tr>
+            }
+    </table>
+        
+
     }
-</ul>
+
